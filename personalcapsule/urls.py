@@ -17,8 +17,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from home import urls as home_urls
+from filedownloader import urls as filedownloader_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("filedownloader/", include(filedownloader.urls)),
+    path("", include(home_urls)),
+    path("filedownloader/", include(filedownloader_urls)),
 ]
