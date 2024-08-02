@@ -1,5 +1,5 @@
 .personal_capsule/
-__pycache__/
+personalcapsule/__pycache__/
 *.pyc
 static/images/*
 !static/images/.gitkeep
