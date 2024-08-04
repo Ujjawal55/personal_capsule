@@ -774,20 +774,21 @@ img {
 .message > a {
   display: flex;
   gap: 1rem;
+  justify-content: space-around;
 }
 
-.message__author,
-.message__date {
-  flex-basis: 25%;
-}
+/* .message__author, */
+/* .message__date { */
+/*   flex-basis: 25%; */
+/* } */
 
-.message__subject {
-  flex-basis: 50%;
-}
+/* .message__subject { */
+/*   flex-basis: 50%; */
+/* } */
 
-.message__date {
-  text-align: right;
-}
+/* .message__date { */
+/*   text-align: right; */
+/* } */
 
 /*=======================
   Single Message
@@ -833,6 +834,13 @@ img {
 
 .backButton i {
   font-size: 1.8rem;
+}
+
+/* NOTE: custom style */
+
+.content-box .message #header {
+  display: flex;
+  justify-content: space-between;
 }
 
 /*=======================
