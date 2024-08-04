@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "home.apps.HomeConfig",
     "filedownloader.apps.FiledownloaderConfig",
+    "notes.apps.NotesConfig",
 ]
 
 MIDDLEWARE = [

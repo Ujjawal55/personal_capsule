@@ -19,9 +19,12 @@ from django.contrib import admin
 from django.urls import path, include
 from home import urls as home_urls
 from filedownloader import urls as filedownloader_urls
+from notes import urls as notes_urls
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include(home_urls)),
     path("filedownloader/", include(filedownloader_urls)),
+    path("notes/", include(notes_urls)),
 ]
