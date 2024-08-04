@@ -9,7 +9,7 @@ class Notes(models.Model):
     title = models.CharField(max_length=30, null=True, blank=True)
     body = models.TextField(blank=True)
     images = models.ImageField(upload_to="notes/images/", null=True, blank=True)
-    is_viewd = models.BooleanField(default=False)
+    is_viewed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(
