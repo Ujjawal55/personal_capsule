@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>this is the notes site</h2>
+<!-- TODO: have to update the update url -->
+<main class="messagePage my-xl">
+  <div class="content-box">
+    <div class="message">
+      <div id="header">
+        <a class="backButton" href="{% url 'notes-list' %}"><i class="im im-angle-left"></i></a>
+        <div class="tag tag--pill tag--main">
+          <a href="#">update</a>
+        </div>
+      </div>
+      <h2 class="message__subject">{{ note.title }}</h2>
+      <p class="message__date">{{ note.created_at }}</p>
+      <p class="message__date">{{ note.updated_at }}</p>
+      <div class="message__body">{{ note.body }}</div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

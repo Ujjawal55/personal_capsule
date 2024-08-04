@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>this is the notes list</h2>
+
+<main class="inbox my-xl">
+  <div class="content-box">
+    {% for note in notes %}
+    <ul class="messages">
+      {% if note.is_viewed %}
+      <li class="message">
+        {% else %}
+      <li class="message message--unread">
+        {% endif %}
+        <a href="{% url 'notes-detail' pk=note.id %}">
+          <span class="message__author">{{ note.title }}</span>
+          <span class="message__date">{{ note.created_at }}</span>
+          <span class="message__date">{{ note.updated_at }}</span>
+        </a>
+      </li>
+    </ul>
+    {% endfor %}
+  </div>
+</main>
+
+{% endblock content %}
