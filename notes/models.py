@@ -11,7 +11,7 @@ class Notes(models.Model):
     image = models.ImageField(upload_to="notes/images/", null=True, blank=True)
     is_viewed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
     )

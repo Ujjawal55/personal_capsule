@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
 <h2>this is the notes site</h2>
-<!-- TODO: have to update the update url -->
+
 <main class="messagePage my-xl">
   <div class="content-box">
     <div class="message">
       <div id="header">
         <a class="backButton" href="{% url 'notes-list' %}"><i class="im im-angle-left"></i></a>
         <div class="tag tag--pill tag--main">
-          <a href="#">update</a>
+          <a href="{% url 'edit-notes' pk=note.id  %}">update</a>
         </div>
       </div>
       <h2 class="message__subject">{{ note.title }}</h2>

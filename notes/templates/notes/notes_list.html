@@ -1,9 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>this is the notes list</h2>
+<section class="hero-section text-center">
+  <div class="container container--narrow">
+    <div class="hero-section__box">
+      <h2>NOTES LIST</h2>
+    </div>
+    <div class="hero-section__search">
+      <form id="searchForm" class="form" action="{% url 'notes-list' %}" method="get">
+        <div class="form__field">
+          <label for="formInput#search">Search Developers </label>
+          <input class="input input--text" id="formInput#search" type="text" name="search_query" value=""
+            placeholder="Search Notes">
+        </div>
+        <input class="btn btn--sub btn--lg" type="submit" value="Search">
+      </form>
+    </div>
+  </div>
+</section>
 
 <main class="inbox my-xl">
-  <div class="content-box">
+  <div class="content-box" style="display:flex; flex-direction:column; gap:3rem;">
     {% for note in notes %}
     <ul class="messages">
       {% if note.is_viewed %}
