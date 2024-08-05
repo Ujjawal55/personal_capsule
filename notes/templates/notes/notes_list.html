@@ -3,7 +3,7 @@
 <section class="hero-section text-center">
   <div class="container container--narrow">
     <div class="hero-section__box">
-      <h2>NOTES LIST</h2>
+      <h2><a href={% url 'notes-list' %}>NOTES LIST</a></h2>
     </div>
     <div class="hero-section__search">
       <form id="searchForm" class="form" action="{% url 'notes-list' %}" method="get">
@@ -18,24 +18,26 @@
   </div>
 </section>
 
-<main class="inbox my-xl">
-  <div class="content-box" style="display:flex; flex-direction:column; gap:3rem;">
-    {% for note in notes %}
-    <ul class="messages">
-      {% if note.is_viewed %}
-      <li class="message">
-        {% else %}
-      <li class="message message--unread">
-        {% endif %}
-        <a href="{% url 'notes-detail' pk=note.id %}">
-          <span class="message__author">{{ note.title }}</span>
-          <span class="message__date">{{ note.created_at }}</span>
-          <span class="message__date">{{ note.updated_at }}</span>
-        </a>
-      </li>
-    </ul>
-    {% endfor %}
-  </div>
-</main>
-
+<section div="notes-pagination">
+  <main class="inbox my-xl">
+    <div class="content-box">
+      {% for note in notes %}
+      <ul class="messages">
+        {% if note.is_viewed %}
+        <li class="message">
+          {% else %}
+        <li class="message message--unread">
+          {% endif %}
+          <a href="{% url 'notes-detail' pk=note.id %}">
+            <span class="message__author">{{ note.title }}</span>
+            <span class="message__date">{{ note.created_at }}</span>
+            <span class="message__date">{{ note.updated_at }}</span>
+          </a>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+  </main>
+  {% include "pagination.html" with querySet=notes custom_range=custom_range %}
+</section>
 {% endblock content %}

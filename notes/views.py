@@ -1,8 +1,7 @@
-from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from notes.models import Notes
 from notes.forms import NotesForm
-from notes.utils import searchQuery
+from notes.utils import searchQuery, pagination
 # Create your views here.
 
 # TODO: have to add the functionality of the editing the message.
@@ -11,12 +10,17 @@ from notes.utils import searchQuery
 
 def notesListView(request):
     notes, search_query = searchQuery(request)
-    context = {"notes": notes}
+    notes, custom_range = pagination(request, notes, 3)
+    context = {
+        "notes": notes,
+        "search_query": search_query,
+        "custom_range": custom_range,
+    }
     return render(request, "notes/notes_list.html", context)
 
 
 def notesDetailView(request, pk):
-    note = Notes.objects.get(id=pk)
+    note = get_object_or_404(Notes, id=pk)
     if not note.is_viewed:
         note.is_viewed = True
         note.save()
