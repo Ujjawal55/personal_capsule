@@ -6,6 +6,7 @@ from notes.utils import searchQuery, pagination
 
 # TODO: have to add the functionality of the editing the message.
 # TODO: have to add the else part for the not valid form of the error handling
+# TODO: have to add the message functionality if the notes is created, deleted, edited
 
 
 def notesListView(request):
@@ -53,3 +54,9 @@ def editNotesView(request, pk):
         form = NotesForm(instance=note)
     context = {"form": form}
     return render(request, "notes/edit_notes.html", context)
+
+
+def deleteNotesView(request, pk):
+    note = Notes.objects.get(id=pk)
+    note.delete()
+    return redirect("notes-list")

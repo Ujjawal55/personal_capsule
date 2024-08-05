@@ -7,8 +7,13 @@
     <div class="message">
       <div id="header">
         <a class="backButton" href="{% url 'notes-list' %}"><i class="im im-angle-left"></i></a>
-        <div class="tag tag--pill tag--main">
-          <a href="{% url 'edit-notes' pk=note.id  %}">update</a>
+        <div class="action-buttons">
+          <div class="tag tag--pill tag--main">
+            <a href="{% url 'edit-notes' pk=note.id %}">update</a>
+          </div>
+          <div class="tag tag--pill tag--main">
+            <a href="{% url 'delete-notes' pk=note.id %}">delete</a>
+          </div>
         </div>
       </div>
       <h2 class="message__subject">{{ note.title }}</h2>

@@ -15,3 +15,10 @@ section[div="notes-pagination"] > main.inbox.my-xl > div.content-box {
   flex-direction: column;
   gap: 3rem;
 }
+
+/* adding the css to the update and delete button */
+
+.actions-botton {
+  display: flex;
+  gap: 3rem;
+}
