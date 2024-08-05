@@ -8,4 +8,5 @@ urlpatterns = [
     path("edit/<str:pk>", views.editNotesView, name="edit-notes"),
     path("delete/<str:pk>", views.deleteNotesView, name="delete-notes"),
     path("<str:pk>/", views.notesDetailView, name="notes-detail"),
+    path("<str:pk>/image/", views.imageView, name="view-image"),
 ]

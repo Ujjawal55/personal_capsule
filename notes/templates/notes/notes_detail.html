@@ -20,6 +20,11 @@
       <p class="message__date">{{ note.created_at }}</p>
       <p class="message__date">{{ note.updated_at }}</p>
       <div class="message__body">{{ note.body }}</div>
+      <p class="message__date">
+        <a href="{% url 'view-image' pk=note.id %}" target="_blank" rel="noopener noreferrer">
+          {{ note.filename }}
+        </a>
+      </p>
     </div>
   </div>
 </main>

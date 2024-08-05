@@ -60,3 +60,9 @@ def deleteNotesView(request, pk):
     note = Notes.objects.get(id=pk)
     note.delete()
     return redirect("notes-list")
+
+
+def imageView(request, pk):
+    note = Notes.objects.get(id=pk)
+    print("the image url is " + note.image.url)
+    return render(request, "notes/view_image.html", {"note": note})

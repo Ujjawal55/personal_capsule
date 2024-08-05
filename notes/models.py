@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+import os
 # Create your models here.
 # NOTE: remove the blank and null property from the scheme.
 # NOTE: how to upload the multiple images.
@@ -18,3 +19,7 @@ class Notes(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+    @property
+    def filename(self):
+        return os.path.basename(self.image.name)
