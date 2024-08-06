@@ -32,7 +32,7 @@ img {
   position: sticky;
   z-index: 111;
   background-color: var(--color-sub);
-  padding: 1.5rem 0;
+  padding: 2.5rem 0;
 }
 
 .header > .container {

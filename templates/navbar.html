@@ -22,15 +22,12 @@
         <li class="header__menuItem">
           <a href="#">FileDownloader</a>
         </li>
-        {% if request.resolver_match.namespace == "study-resources" %}
+        {% if request.resolver_match.namespace == "notes" %}
         <li class="header__menuItem">
-          <a href="{% url 'study-resources:create-resources' %}" class="btn btn--sub">+ Add</a>
+          <a href="{% url 'notes:create-notes' %}" class="btn btn--sub">Add</a>
         </li>
-        {% elif request.resolver_match.namespace == "notes" %}
-        <li class="header__menuItem">
-          <a href="{% url 'notes:create-notes' %}" class="btn btn--sub">+ Add</a>
-        </li>
-        {% else %}
+        {% endif %}
+        {% if request.resolver_match.namespace == "home" %}
         <li class="header__menuItem">
           <a href="#" class="btn btn--sub">Logout</a>
         </li>

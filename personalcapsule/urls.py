@@ -26,7 +26,7 @@ from study_resources import urls as study_resources_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include(home_urls)),
+    path("", include(home_urls, namespace="home")),
     path("filedownloader/", include(filedownloader_urls)),
     path("notes/", include(notes_urls, namespace="notes")),
     path(
