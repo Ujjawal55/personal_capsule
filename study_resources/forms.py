@@ -1,14 +1,14 @@
 from django.forms import ModelForm
-from .models import ResourcesList
+from .models import Bookmark
 
 
-class ResourcesListForm(ModelForm):
+class BookmarkForm(ModelForm):
     class Meta:
-        model = ResourcesList
+        model = Bookmark
         fields = "__all__"
 
     def __init__(self, *args, **kwargs):
-        super(ResourcesListForm, self).__init__(*args, **kwargs)
+        super(BookmarkForm, self).__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
             field.widget.attrs.update({"class": "input"})
