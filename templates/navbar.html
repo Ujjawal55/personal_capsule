@@ -27,6 +27,11 @@
           <a href="{% url 'notes:create-notes' %}" class="btn btn--sub">Add</a>
         </li>
         {% endif %}
+        {% if request.resolver_match.url_name == "bookmark" %}
+        <li class="header__menuItem">
+          <a href="{% url 'notes:create-notes' %}" class="btn btn--sub">Add</a>
+        </li>
+        {% endif %}
         {% if request.resolver_match.namespace == "home" %}
         <li class="header__menuItem">
           <a href="#" class="btn btn--sub">Logout</a>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<section class="hero-section text-center">
+  <div class="container container--narrow">
+    <div class="hero-section__box">
+      <h2>Bookmark</h2>
+    </div>
+    <div class="hero-section__search">
+      <form id="searchForm" class="form" action="#" method="get">
+        <div class="form__field">
+          <input
+            class="input input--text"
+            id="formInput#search"
+            type="text"
+            name="search_query"
+            value=""
+            placeholder="Search Resources"
+          />
+        </div>
+        <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}
