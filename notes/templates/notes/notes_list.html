@@ -3,10 +3,10 @@
 <section class="hero-section text-center">
   <div class="container container--narrow">
     <div class="hero-section__box">
-      <h2><a href={% url 'notes-list' %}>NOTES LIST</a></h2>
+      <h2><a href={% url 'notes:notes-list' %}>NOTES LIST</a></h2>
     </div>
     <div class="hero-section__search">
-      <form id="searchForm" class="form" action="{% url 'notes-list' %}" method="get">
+      <form id="searchForm" class="form" action="{% url 'notes:notes-list' %}" method="get">
         <div class="form__field">
           <label for="formInput#search">Search Developers </label>
           <input class="input input--text" id="formInput#search" type="text" name="search_query" value=""
@@ -28,7 +28,7 @@
           {% else %}
         <li class="message message--unread">
           {% endif %}
-          <a href="{% url 'notes-detail' pk=note.id %}">
+          <a href="{% url 'notes:notes-detail' pk=note.id %}">
             <span class="message__author">{{ note.title }}</span>
             <span class="message__date">{{ note.created_at }}</span>
             <span class="message__date">{{ note.updated_at }}</span>

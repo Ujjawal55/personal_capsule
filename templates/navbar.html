@@ -1,0 +1,39 @@
+{% load static %}
+<!-- Header Section -->
+<header class="header">
+  <div class="container container--narrow">
+    <a href="#" class="header__logo">
+      <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
+    </a>
+    <nav class="header__nav">
+      <input type="checkbox" id="responsive-menu" />
+      <label for="responsive-menu" class="toggle-menu">
+        <span>Menu</span>
+        <div class="toggle-menu__lines"></div>
+      </label>
+      <ul class="header__menu">
+        <li class="header__menuItem">
+          <a href="{% url 'study-resources:resources-list' %}"
+            >Study Resources</a
+          >
+        </li>
+        <li class="header__menuItem">
+          <a href="{% url 'notes:notes-list' %}">Notes</a>
+        </li>
+        <li class="header__menuItem"><a href="#">Inbox</a></li>
+        <li class="header__menuItem">
+          <a href="#">FileDownloader</a>
+        </li>
+        {% if request.resolver_match.namespace == "study-resources" %}
+        <li class="header__menuItem">
+          <a href="#" class="btn btn--sub">+ Add</a>
+        </li>
+        {% else %}
+        <li class="header__menuItem">
+          <a href="#" class="btn btn--sub">Logout</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>

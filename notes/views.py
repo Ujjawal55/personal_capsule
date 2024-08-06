@@ -34,7 +34,7 @@ def createNotesView(request):
         form = NotesForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect("notes-list")
+            return redirect("notes:notes-list")
     else:
         form = NotesForm()
         context = {"form": form}
@@ -49,7 +49,7 @@ def editNotesView(request, pk):
         if form.is_valid():
             updated_note = form.save(commit=False)
             updated_note.save()
-            return redirect("notes-detail", pk=updated_note.id)
+            return redirect("notes:notes-detail", pk=updated_note.id)
     else:
         form = NotesForm(instance=note)
     context = {"form": form}
@@ -59,7 +59,7 @@ def editNotesView(request, pk):
 def deleteNotesView(request, pk):
     note = Notes.objects.get(id=pk)
     note.delete()
-    return redirect("notes-list")
+    return redirect("notes:notes-list")
 
 
 def imageView(request, pk):

@@ -22,13 +22,16 @@ from django.urls import path, include
 from home import urls as home_urls
 from filedownloader import urls as filedownloader_urls
 from notes import urls as notes_urls
-
+from study_resources import urls as study_resources_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include(home_urls)),
     path("filedownloader/", include(filedownloader_urls)),
-    path("notes/", include(notes_urls)),
+    path("notes/", include(notes_urls, namespace="notes")),
+    path(
+        "study-resources/", include(study_resources_urls, namespace="study-resources")
+    ),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

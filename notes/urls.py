@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 
+app_name = "notes"
+
 urlpatterns = [
     path("", views.notesListView, name="notes-list"),
     path("create/", views.createNotesView, name="create-notes"),  # type: ignore

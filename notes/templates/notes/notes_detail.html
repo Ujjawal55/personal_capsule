@@ -6,13 +6,13 @@
   <div class="content-box">
     <div class="message">
       <div id="header">
-        <a class="backButton" href="{% url 'notes-list' %}"><i class="im im-angle-left"></i></a>
+        <a class="backButton" href="{% url 'notes:notes-list' %}"><i class="im im-angle-left"></i></a>
         <div class="action-buttons">
           <div class="tag tag--pill tag--main">
-            <a href="{% url 'edit-notes' pk=note.id %}">edit</a>
+            <a href="{% url 'notes:edit-notes' pk=note.id %}">edit</a>
           </div>
           <div class="tag tag--pill tag--main">
-            <a href="{% url 'delete-notes' pk=note.id %}">delete</a>
+            <a href="{% url 'notes:delete-notes' pk=note.id %}">delete</a>
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
       <p class="message__date">{{ note.updated_at }}</p>
       <div class="message__body">{{ note.body }}</div>
       <p class="message__date">
-        <a href="{% url 'view-image' pk=note.id %}" target="_blank" rel="noopener noreferrer">
+        <a href="{% url 'notes:view-image' pk=note.id %}" target="_blank" rel="noopener noreferrer">
           {{ note.filename }}
         </a>
       </p>
