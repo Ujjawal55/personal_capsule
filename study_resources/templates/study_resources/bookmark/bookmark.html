@@ -7,18 +7,38 @@
     <div class="hero-section__search">
       <form id="searchForm" class="form" action="#" method="get">
         <div class="form__field">
-          <input
-            class="input input--text"
-            id="formInput#search"
-            type="text"
-            name="search_query"
-            value=""
-            placeholder="Search Resources"
-          />
+          <input class="input input--text" id="formInput#search" type="text" name="search_query" value=""
+            placeholder="Search Bookmark" />
         </div>
         <input class="btn btn--sub btn--lg" type="submit" value="Search" />
       </form>
     </div>
   </div>
+</section>
+
+<section div="notes-pagination">
+  <main class="inbox my-xl">
+    <div class="content-box">
+      {% for bookmark in bookmarks %}
+      <ul class="messages">
+        <li class="message" id="bookmark">
+          <span class="message__author">{{ bookmark.title }}</span>
+          <span id="action-button">
+            <div class="tag tag--pill tag--main">
+              <a href="{% url 'study-resources:edit-bookmark' pk=bookmark.id %}">edit</a>
+            </div>
+            <div class="tag tag--pill tag--main">
+              <a href="{% url 'study-resources:delete-bookmark' pk=bookmark.id %}">delete</a>
+            </div>
+            <div class="tag tag--pill tag--main">
+              <a href="{{ bookmark.url }}" target="_blank" rel="noopener noreferrer">open</a>
+            </div>
+          </span>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+  </main>
+  <!-- {% include "pagination.html" with querySet=notes custom_range=custom_range %} -->
 </section>
 {% endblock content %}

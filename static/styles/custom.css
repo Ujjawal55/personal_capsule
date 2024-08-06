@@ -22,3 +22,9 @@ section[div="notes-pagination"] > main.inbox.my-xl > div.content-box {
   display: flex;
   gap: 3rem;
 }
+
+/* bookmark css */
+li.message#bookmark {
+  display: flex;
+  justify-content: space-between;
+}

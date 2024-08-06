@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+
+<main class="formPage my-xl">
+  <div class="content-box">
+    <div class="formWrapper">
+      <a class="backButton" href="{% url 'study-resources:bookmarks-list' %}"><i class="im im-angle-left"></i></a>
+      <br />
+
+      <form class="form" action="" method="POST">
+        {% csrf_token %}
+
+        <h3>Are you sure, you want to delete to </h3>
+        <br></br>
+        <div class="form__field">
+          <label for="formInput#text">{{form.title.label}}</label>
+          {{form.title}}
+        </div>
+
+        <div class="form__field">
+          <label for="formInput#text">{{form.url.label}}</label>
+          {{form.url}}
+        </div>
+
+
+        <a class="btn btn--sub btn--lg my-md" href="{% url 'study-resources:bookmarks-list' %}">go_back
+        </a>
+
+        <input class="btn btn--sub btn--lg my-md" type="submit" value="Confirm" />
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

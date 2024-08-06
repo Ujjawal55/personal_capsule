@@ -8,4 +8,6 @@ urlpatterns = [
     path("", views.resourcesListView, name="resources-list"),
     path("bookmark/", views.BookmarkView, name="bookmarks-list"),
     path("bookmark/create/", views.createBookmarkView, name="create-bookmark"),
+    path("bookmark/edit/<str:pk>", views.editBookmarkView, name="edit-bookmark"),
+    path("bookmark/delete/<str:pk>", views.deleteBookmarkView, name="delete-bookmark"),
 ]
