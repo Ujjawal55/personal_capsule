@@ -51,3 +51,11 @@ def deleteBookmarkView(request, pk):
         form = BookmarkForm(instance=bookmark)
     context = {"form": form}
     return render(request, "study_resources/bookmark/delete_bookmark.html", context)
+
+
+# started the video list views...
+
+
+def videosListView(request):
+    context = {}
+    return render(request, "study_resources/videos/videos.html", context)

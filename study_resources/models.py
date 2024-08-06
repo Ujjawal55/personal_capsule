@@ -13,3 +13,15 @@ class Bookmark(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+
+class Video(models.Model):
+    title = models.CharField(max_length=40)
+    description = models.TextField(blank=True, null=False)
+    url = models.URLField()
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, primary_key=True, editable=False
+    )
+
+    def __str__(self):
+        return str(self.title)
