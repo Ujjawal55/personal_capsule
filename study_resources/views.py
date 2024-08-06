@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import BookmarkForm
+from .forms import BookmarkForm, VideoForm
 from .models import Bookmark, Video
 # Create your views here.
 
@@ -60,3 +60,15 @@ def videosListView(request):
     videos = Video.objects.all()
     context = {"videos": videos}
     return render(request, "study_resources/videos/videos.html", context)
+
+
+def createVideoListView(request):
+    if request.method == "POST":
+        form = VideoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect("study-resources:videos-list")
+    else:
+        form = VideoForm()
+    context = {"form": form}
+    return render(request, "study_resources/videos/create_video_list.html", context)

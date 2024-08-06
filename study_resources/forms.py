@@ -16,7 +16,7 @@ class BookmarkForm(ModelForm):
 
 class VideoForm(ModelForm):
     class Meta:
-        models = Video
+        model = Video
         fields = "__all__"
 
     def __init__(self, *args, **kwargs):

@@ -12,4 +12,5 @@ urlpatterns = [
     path("bookmark/delete/<str:pk>", views.deleteBookmarkView, name="delete-bookmark"),
     # started the video list url
     path("videos/", views.videosListView, name="videos-list"),
+    path("videos/create/", views.createVideoListView, name="create-videos-list"),
 ]
