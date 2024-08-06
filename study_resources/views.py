@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import BookmarkForm
-from .models import Bookmark
+from .models import Bookmark, Video
 # Create your views here.
 
 
@@ -57,5 +57,6 @@ def deleteBookmarkView(request, pk):
 
 
 def videosListView(request):
-    context = {}
+    videos = Video.objects.all()
+    context = {"videos": videos}
     return render(request, "study_resources/videos/videos.html", context)

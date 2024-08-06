@@ -21,18 +21,19 @@
 <section class="projectsList">
   <div class="container">
     <div class="grid grid--three">
+      {% for video in videos %}
       <div class="column">
         <div class="card project" id="video">
-
           <div id="video-logo">
-            <a href="#" class="project">
+            <a href="{{ video.url }}" target="_blank" rel="noopener noreferrer" class="project">
               <img class="project__thumbnail" id="custom-image" src="{% static 'images/video.png' %}"
                 alt="project thumbnail" />
               <div class="card__body">
-                <h3 class="project__title" style="text-align: center;">video_title</h3>
+                <h3 class="project__title" style="text-align: center;">{{ video.title }}</h3>
               </div>
             </a>
           </div>
+
           <div style="display: inline-block; padding:1rem;">
             <span class="tag tag--pill tag--main">
               <small>view</small>
@@ -46,10 +47,9 @@
               <a>delete</a>
             </span>
           </div>
-
-
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </section>
