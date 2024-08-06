@@ -8,7 +8,20 @@ def resourcesListView(request):
 
 
 def BookmarkView(request):
-    form = BookmarkForm()
+    context = {}
+    return render(request, "study_resources/bookmark/bookmark.html", context)
 
-    context = {"form": form}
-    return render(request, "study_resources/bookmark.html", context)
+
+def createBookmarkView(request):
+    if request.method == "POST":
+        form = BookmarkForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(
+            "study-resources:bookmarks-list"
+        )  # TODO: redirect the user to the bookmark not to the list
+    else:
+        form = BookmarkForm()
+        context = {"form": form}
+
+        return render(request, "study_resources/bookmark/create_bookmark.html", context)

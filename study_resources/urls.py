@@ -6,5 +6,6 @@ app_name = "study-resources"
 
 urlpatterns = [
     path("", views.resourcesListView, name="resources-list"),
-    path("bookmark/", views.BookmarkView, name="bookmark"),
+    path("bookmark/", views.BookmarkView, name="bookmarks-list"),
+    path("bookmark/create/", views.createBookmarkView, name="create-bookmark"),
 ]
