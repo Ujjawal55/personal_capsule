@@ -13,9 +13,7 @@
       </label>
       <ul class="header__menu">
         <li class="header__menuItem">
-          <a href="{% url 'study-resources:resources-list' %}"
-            >Study Resources</a
-          >
+          <a href="{% url 'study-resources:resources-list' %}">Study Resources</a>
         </li>
         <li class="header__menuItem">
           <a href="{% url 'notes:notes-list' %}">Notes</a>
@@ -26,7 +24,11 @@
         </li>
         {% if request.resolver_match.namespace == "study-resources" %}
         <li class="header__menuItem">
-          <a href="#" class="btn btn--sub">+ Add</a>
+          <a href="{% url 'study-resources:create-resources' %}" class="btn btn--sub">+ Add</a>
+        </li>
+        {% elif request.resolver_match.namespace == "notes" %}
+        <li class="header__menuItem">
+          <a href="{% url 'notes:create-notes' %}" class="btn btn--sub">+ Add</a>
         </li>
         {% else %}
         <li class="header__menuItem">

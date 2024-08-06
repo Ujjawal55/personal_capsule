@@ -3,19 +3,13 @@
 <section class="hero-section text-center">
   <div class="container container--narrow">
     <div class="hero-section__box">
-      <h2><a href="#">STUDY RESOURCES</a></h2>
+      <h2>STUDY RESOURCES</h2>
     </div>
     <div class="hero-section__search">
       <form id="searchForm" class="form" action="#" method="get">
         <div class="form__field">
-          <input
-            class="input input--text"
-            id="formInput#search"
-            type="text"
-            name="search_query"
-            value=""
-            placeholder="Search Resources"
-          />
+          <input class="input input--text" id="formInput#search" type="text" name="search_query" value=""
+            placeholder="Search Resources" />
         </div>
         <input class="btn btn--sub btn--lg" type="submit" value="Search" />
       </form>
@@ -26,13 +20,15 @@
 <section div="notes-pagination">
   <main class="inbox my-xl">
     <div class="content-box">
+      {% for resource in resources %}
       <ul class="messages">
         <li class="message">
           <a href="#">
-            <span class="message__author">this is the first note</span>
+            <span class="message__author">{{ resource }}</span>
           </a>
         </li>
       </ul>
+      {% endfor %}
     </div>
   </main>
   <!-- {% include "pagination.html" with querySet=notes custom_range=custom_range %} -->

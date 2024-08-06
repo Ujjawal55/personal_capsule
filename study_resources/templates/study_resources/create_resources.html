@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>Create Resource</h2>
+<main class="formPage my-xl">
+  <div class="content-box">
+    <div class="formWrapper">
+      <a class="backButton" href="{% url 'study-resources:resources-list' %}"
+        ><i class="im im-angle-left"></i
+      ></a>
+      <br />
+      <form class="form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form__field">
+          <label for="formInput#text">{{form.name.label}}</label>
+          {{form.name}}
+        </div>
+
+        <input class="btn btn--sub btn--lg my-md" type="submit" value="Add" />
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

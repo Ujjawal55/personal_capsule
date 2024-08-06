@@ -38,7 +38,6 @@ def createNotesView(request):
     else:
         form = NotesForm()
         context = {"form": form}
-
         return render(request, "notes/create_notes.html", context)
 
 
@@ -52,7 +51,7 @@ def editNotesView(request, pk):
             return redirect("notes:notes-detail", pk=updated_note.id)
     else:
         form = NotesForm(instance=note)
-    context = {"form": form}
+    context = {"form": form, "note": note}
     return render(request, "notes/edit_notes.html", context)
 
 
