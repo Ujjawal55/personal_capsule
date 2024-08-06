@@ -72,3 +72,11 @@ def createVideoListView(request):
         form = VideoForm()
     context = {"form": form}
     return render(request, "study_resources/videos/create_video_list.html", context)
+
+
+def videoDescriptionView(request, pk):
+    video = Video.objects.get(id=pk)
+    context = {"video": video}
+    return render(
+        request, "study_resources/videos/view_video_description.html", context
+    )
