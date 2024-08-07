@@ -39,6 +39,6 @@
       {% endfor %}
     </div>
   </main>
-  <!-- {% include "pagination.html" with querySet=notes custom_range=custom_range %} -->
+  {% include "pagination.html" with querySet=bookmarks custom_range=custom_range %}
 </section>
 {% endblock content %}

@@ -27,12 +27,12 @@ def pagination(request, projects, objects_per_page):
         page_number = paginator.num_pages
         projects = paginator.page(page_number)
 
-    leftIndex = int(page_number) - 4
+    leftIndex = int(page_number) - 2
 
     if leftIndex <= 0:
         leftIndex = 1
 
-    rightIndex = int(page_number) + 3
+    rightIndex = int(page_number) + 2
 
     if rightIndex > paginator.num_pages:
         rightIndex = paginator.num_pages

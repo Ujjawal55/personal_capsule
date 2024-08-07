@@ -1,0 +1,1 @@
+1. have to add the 404 functionality in the views and the also when the search is not found.

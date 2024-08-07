@@ -4,3 +4,4 @@ _pycache__/
 static/images/*
 !static/images/.gitkeep
 .env
+**/todo-txt

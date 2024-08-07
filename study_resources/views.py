@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import BookmarkForm, VideoForm
 from .models import Bookmark, Video
+from .utils import searchQuery, pagination
 # Create your views here.
 
 
@@ -9,8 +10,14 @@ def resourcesListView(request):
 
 
 def BookmarkView(request):
-    bookmarks = Bookmark.objects.all()
-    context = {"bookmarks": bookmarks}
+    bookmarks, search_query = searchQuery(request, Bookmark)
+    bookmarks, custom_range = pagination(request, bookmarks, 3)
+
+    context = {
+        "bookmarks": bookmarks,
+        "search_query": search_query,
+        "custom_range": custom_range,
+    }
     return render(request, "study_resources/bookmark/bookmark.html", context)
 
 
@@ -57,8 +64,13 @@ def deleteBookmarkView(request, pk):
 
 
 def videosListView(request):
-    videos = Video.objects.all()
-    context = {"videos": videos}
+    videos, search_query = searchQuery(request, Video)
+    videos, custom_range = pagination(request, videos, 3)
+    context = {
+        "videos": videos,
+        "search_query": search_query,
+        "custom_range": custom_range,
+    }
     return render(request, "study_resources/videos/videos.html", context)
 
 

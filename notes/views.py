@@ -57,8 +57,11 @@ def editNotesView(request, pk):
 
 def deleteNotesView(request, pk):
     note = Notes.objects.get(id=pk)
-    note.delete()
-    return redirect("notes:notes-list")
+    if request.method == "POST":
+        note.delete()
+        return redirect("notes:notes-list")
+    context = {"note": note}
+    return render(request, "notes/delete_note.html", context)
 
 
 def imageView(request, pk):
