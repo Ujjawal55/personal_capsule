@@ -1,8 +1,6 @@
 .personal_capsule/
 _pycache__/
 *.pyc
-static/images/*
-!static/images/.gitkeep
 .env
 **/todo-txt
 backup/
