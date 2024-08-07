@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
-# Create your views here.
+from home.utils import getTask
 
 
 def homePage(request):
-    return render(request, "home/index.html", {})
+    task = getTask("")
+    context = {"task": task}
+    return render(request, "home/index.html", context)

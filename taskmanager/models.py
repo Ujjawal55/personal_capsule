@@ -23,6 +23,7 @@ class SubTask(models.Model):
     title = models.CharField(max_length=40)
     created_at = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(blank=True, null=True)
+    is_completed = models.BooleanField(blank=True, null=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
     )

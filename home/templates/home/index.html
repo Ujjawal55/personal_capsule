@@ -1,3 +1,75 @@
-{% extends 'base.html' %} {% block content %}
-<h2>this is the home page</h2>
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<!-- Main Section -->
+<main class="profile my-md">
+  <div class="container">
+    <div class="layout">
+      <div class="column column--1of3">
+        <div class="card text-center">
+          <div class="card__body dev">
+            <img class="avatar a vatar--xl" src="" />
+            <h2 class="dev__name"></h2>
+            <p class="dev__title"></p>
+            <p class="dev__location"></p>
+            <ul class="dev__social">
+
+              {% if profile.social_github %}
+              <li>
+                <a title="Github" href="{{profile.social_github}}" target="_blank"><i
+                    class="fa-brands fa-square-github fa-2x"></i></a>
+              </li>
+              {% endif %}
+              {% if profile.social_linkedin %}
+              <li>
+                <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank"><i
+                    class="fa-brands fa-linkedin fa-2x"></i></a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% if task %}
+      <div class="column column--2of3">
+        <div class="devInfo">
+          <h3 class="devInfo__title">Title</h3>
+          <p class="devInfo__about">{{ task.title }}</p>
+        </div>
+        <div class="devInfo">
+          <h3 class="devInfo__title">Description</h3>
+          <div class="devInfo__skills">{{ task.description }}</div>
+        </div>
+        <div class="devInfo">
+          <h3 class="devInfo__title">SubTask</h3>
+          <div class="settings">
+            <h3 class="settings__title">Title</h3>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i>
+              Edit</a>
+          </div>
+          {% for subtask in task.subtasks.all %}
+          {% if subtask %}
+          {% if subtask.completed_at__isnull %}
+          <h6>{{ subtask.title }}</h6>
+          {% else %}
+          <s>
+            <h6>{{ subtask.title }}</h6>
+          </s>
+          {% endif %}
+          {% else %}
+          <h6>No Subtask Available</h6>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <h2>No Task</h3>
+        {% endif %}
+
+    </div>
+  </div>
+</main>
+
 {% endblock content %}
