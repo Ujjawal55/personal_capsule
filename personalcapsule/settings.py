@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "filedownloader.apps.FiledownloaderConfig",
     "notes.apps.NotesConfig",
     "study_resources.apps.StudyResourcesConfig",
+    "taskmanager.apps.TaskmanagerConfig",
 ]
 
 MIDDLEWARE = [

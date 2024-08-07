@@ -23,6 +23,7 @@ from home import urls as home_urls
 from filedownloader import urls as filedownloader_urls
 from notes import urls as notes_urls
 from study_resources import urls as study_resources_urls
+from taskmanager import urls as taskmanager_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -32,6 +33,7 @@ urlpatterns = [
     path(
         "study-resources/", include(study_resources_urls, namespace="study-resources")
     ),
+    path("taskmanager/", include(taskmanager_urls, namespace="taskmanager")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

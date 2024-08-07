@@ -2,5 +2,5 @@
 _pycache__/
 *.pyc
 .env
-**/todo-txt
+**/todo.txt
 backup/
