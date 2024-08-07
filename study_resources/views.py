@@ -80,3 +80,27 @@ def videoDescriptionView(request, pk):
     return render(
         request, "study_resources/videos/view_video_description.html", context
     )
+
+
+def editVideoView(request, pk):
+    video = Video.objects.get(id=pk)
+    if request.method == "POST":
+        form = VideoForm(request.POST, instance=video)
+        if form.is_valid():
+            form.save()
+            return redirect("study-resources:video-description", pk=video.id)
+    else:
+        form = VideoForm(instance=video)
+    context = {"form": form}
+    return render(request, "study_resources/videos/video_edit.html", context)
+
+
+def deleteVideoView(request, pk):
+    video = Video.objects.get(id=pk)
+    if request.method == "POST":
+        video.delete()
+        return redirect("study-resources:videos-list")
+    else:
+        form = VideoForm(instance=video)
+    context = {"form": form}
+    return render(request, "study_resources/videos/delete_video.html", context)

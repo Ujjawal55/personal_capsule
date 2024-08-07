@@ -18,4 +18,6 @@ urlpatterns = [
         views.videoDescriptionView,
         name="video-description",
     ),
+    path("videos/edit/<str:pk>", views.editVideoView, name="edit-video"),
+    path("videos/delete/<str:pk>", views.deleteVideoView, name="delete-video"),
 ]

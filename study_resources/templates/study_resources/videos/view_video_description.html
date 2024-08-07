@@ -22,6 +22,16 @@
         </div>
       </div>
     </div>
+    <a
+      href="{% url 'study-resources:videos-list' %}"
+      class="btn btn--sub btn--lg"
+      >Back</a
+    >
+    <a
+      href="{% url 'study-resources:edit-video' pk=video.id %}"
+      class="btn btn--sub btn--lg"
+      >Edit</a
+    >
   </div>
 </main>
 

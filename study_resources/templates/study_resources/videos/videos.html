@@ -40,11 +40,11 @@
             </span>
 
             <span class="tag tag--pill tag--main">
-              <a>edit</a>
+              <a href={% url 'study-resources:edit-video' pk=video.id %}>edit</a>
             </span>
 
             <span class="tag tag--pill tag--main">
-              <a>delete</a>
+              <a href={% url 'study-resources:delete-video' pk=video.id %}>delete</a>
             </span>
           </div>
         </div>
