@@ -26,6 +26,8 @@
   <!-- <link rel="stylesheet" href='{% static "styles/custom.css" %}' /> -->
   <!--- Index file css -->
   <!-- <link rel="stylesheet" href='{% static "styles/index.css" %}' /> -->
+  {% block css %}
+  {% endblock css %}
 </head>
 
 <body>
@@ -36,5 +38,7 @@
 </body>
 <script src="{% static 'uikit/app.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+{% block js %}
+{% endblock js %}
 
 </html>

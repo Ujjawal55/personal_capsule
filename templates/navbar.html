@@ -18,7 +18,7 @@
         <li class="header__menuItem">
           <a href="{% url 'notes:notes-list' %}">Notes</a>
         </li>
-        <li class="header__menuItem"><a href="#">Inbox</a></li>
+        <li class="header__menuItem"><a href="{% url 'taskmanager:tasks-list' %}">Taskmanager</a></li>
         <li class="header__menuItem">
           <a href="#">FileDownloader</a>
         </li>
@@ -37,6 +37,13 @@
           <a href="{% url 'study-resources:create-videos-list' %}" class="btn btn--sub">Add</a>
         </li>
         {% endif %}
+
+        {% if request.resolver_match.url_name == "daily-tasks-list" %}
+        <li class="header__menuItem">
+          <a href="{% url 'taskmanager:create-daily-task' %}" class="btn btn--sub">Add</a>
+        </li>
+        {% endif %}
+
         {% if request.resolver_match.namespace == "home" %}
         <li class="header__menuItem">
           <a href="#" class="btn btn--sub">Logout</a>

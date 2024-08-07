@@ -3,7 +3,7 @@
 <section class="hero-section text-center">
   <div class="container container--narrow">
     <div class="hero-section__box">
-      <h2>STUDY RESOURCES</h2>
+      <h2>Task Manager</h2>
     </div>
   </div>
 </section>
@@ -13,24 +13,24 @@
     <div class="content-box">
       <ul class="messages">
         <li class="message">
-          <a href="{% url 'study-resources:bookmarks-list' %}">
-            <span class=" message__author">
-              <h2>Bookmark</h2>
+          <a href="{% url 'taskmanager:daily-tasks-list' %}">
+            <span class="message__author">
+              <h2>Daily Task</h2>
             </span>
           </a>
         </li>
       </ul>
       <ul class="messages">
         <li class="message">
-          <a href="{% url 'study-resources:videos-list' %}">
-            <span class=" message__author">
-              <h2>Videos</h2>
+          <a href="#">
+            <span class="message__author">
+              <h2>Weekly Task</h2>
             </span>
           </a>
         </li>
       </ul>
-
     </div>
   </main>
+  <!-- {% include "pagination.html" with querySet=notes custom_range=custom_range %} -->
 </section>
 {% endblock content %}

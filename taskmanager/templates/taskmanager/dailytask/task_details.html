@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>this is the task site site</h2>
+
+<main class="messagePage my-xl">
+  <div class="content-box">
+    <div class="message">
+      <div id="header">
+        <a class="backButton" href="{% url 'taskmanager:daily-tasks-list' %}"><i class="im im-angle-left"></i></a>
+        <div class="action-buttons">
+          <div class="tag tag--pill tag--main">
+            <a href="{% url 'taskmanager:edit-daily-task' pk=task.id %}">edit</a>
+          </div>
+          <div class="tag tag--pill tag--main">
+            <a href="{% url 'taskmanager:delete-daily-task' pk=task.id %}">delete</a>
+          </div>
+        </div>
+      </div>
+      <h2 class="message__subject">{{ task.title }}</h2>
+      <p class="message__date">{{ task.created_at }}</p>
+      <div class="message__body">{{ task.description }}</div>
+      <h2 class="message__subject">SubTask</h2>
+      {% if task.subtasks.all %} {% for subtask in task.subtasks.all %}
+      <div>{{ subtask.title }}</div>
+      {% endfor %} {% else %}
+      <h3>No Subtask available.</h3>
+      {% endif %}
+    </div>
+  </div>
+</main>
+
+{% endblock content %}
