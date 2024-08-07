@@ -5,3 +5,4 @@ static/images/*
 !static/images/.gitkeep
 .env
 **/todo-txt
+backup/
