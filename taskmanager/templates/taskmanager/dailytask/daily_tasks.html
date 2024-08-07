@@ -3,7 +3,7 @@
 <section class="hero-section text-center">
   <div class="container container--narrow">
     <div class="hero-section__box">
-      <h2>Task Manager</h2>
+      <h2>Daily Task</h2>
     </div>
   </div>
 </section>
@@ -11,24 +11,17 @@
 <section div="notes-pagination">
   <main class="inbox my-xl">
     <div class="content-box">
+      {% for task in tasks %}
       <ul class="messages">
         <li class="message">
-          <a href="{% url 'taskmanager:daily-tasks-list' %}">
-            <span class="message__author">
-              <h2>Daily Task</h2>
-            </span>
+          <a href="{% url 'taskmanager:details-daily-task' pk=task.id %}">
+            <span class="message__author">{{ task.title }}</span>
+            <span class="message__date">{{ task.created_at }}</span>
+            <span class="message__date">{{ task.completed_at }}</span>
           </a>
         </li>
       </ul>
-      <ul class="messages">
-        <li class="message">
-          <a href="#">
-            <span class="message__author">
-              <h2>Weekly Task</h2>
-            </span>
-          </a>
-        </li>
-      </ul>
+      {% endfor %}
     </div>
   </main>
   <!-- {% include "pagination.html" with querySet=notes custom_range=custom_range %} -->

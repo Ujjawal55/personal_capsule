@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="formPage my-xl">
+  <div class="content-box">
+    <div class="formWrapper">
+      <form class="form" action="" method="POST">
+        {% csrf_token %}
+
+        <h3>Are you sure, you want to delete?</h3>
+        <br></br>
+
+        <a class="btn btn--sub btn--lg my-md" href="{% url 'taskmanager:details-daily-task' pk=task.id %}">go_back
+        </a>
+
+        <input class="btn btn--sub btn--lg my-md" type="submit" value="Confirm" />
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

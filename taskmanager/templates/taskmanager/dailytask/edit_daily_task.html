@@ -1,0 +1,124 @@
+{% extends 'base.html' %} {% block css %}
+<style>
+  .subtask-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .subtask-entry input {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+</style>
+
+{% endblock css %} {% block content %}
+
+<h2>Create daily task</h2>
+<main class="formPage my-xl">
+  <div class="content-box">
+    <div class="formWrapper">
+      <a
+        class="backButton"
+        href="{% url 'taskmanager:details-daily-task' pk=daily_task.id %}"
+        ><i class="im im-angle-left"></i
+      ></a>
+      <br />
+      <form class="form" action="" method="POST">
+        {% csrf_token %}
+
+        <div class="form__field">
+          <label for="formInput#text">{{ form.title.label }}</label>
+          {{ form.title }}
+        </div>
+
+        <div class="form__field">
+          <label for="formInput#text">{{ form.description.label }}</label>
+          {{ form.description }}
+        </div>
+
+        <div id="subtasks-container">
+          {% for subtask in subtasks %}
+          <div class="subtask-entry">
+            <input
+              class="input"
+              type="text"
+              name="subtask[]"
+              placeholder="Subtask title"
+              value="{{ subtask.title }}"
+              required
+            />
+            <button
+              type="button"
+              class="btn btn-sub btn--lg"
+              style="background-color: #f25a5c; color: white"
+            >
+              Delete
+            </button>
+          </div>
+          {% endfor %}
+          <!-- Subtasks will be added here -->
+        </div>
+
+        <button
+          type="button"
+          id="add-subtask"
+          class="btn btn--sub btn--lg my-md"
+        >
+          ADD SUBTASK
+        </button>
+        <button type="submit" class="btn btn--sub btn--lg my-md">SUBMIT</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- Template for new subtask entries -->
+<template id="subtask-template">
+  <div class="subtask-entry">
+    <input
+      class="input"
+      type="text"
+      name="subtask[]"
+      placeholder="Subtask title"
+      required
+    />
+    <button
+      type="button"
+      class="btn btn-sub btn--lg"
+      style="background-color: #f25a5c; color: white"
+    >
+      Delete
+    </button>
+  </div>
+</template>
+
+{% endblock content %} {% block js %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const addSubtaskBtn = document.getElementById("add-subtask");
+    const subtasksContainer = document.getElementById("subtasks-container");
+    const subtaskTemplate = document.getElementById("subtask-template");
+
+    function addDeleteFunctionality(deleteBtn) {
+      deleteBtn.addEventListener("click", function () {
+        this.closest(".subtask-entry").remove();
+      });
+    }
+
+    // Add delete functionality to existing subtasks
+    document
+      .querySelectorAll(".delete-subtask")
+      .forEach(addDeleteFunctionality);
+
+    addSubtaskBtn.addEventListener("click", function () {
+      const subtaskEntry = document.importNode(subtaskTemplate.content, true);
+      subtasksContainer.appendChild(subtaskEntry);
+
+      // Add delete functionality to the new subtask
+      const deleteBtn =
+        subtasksContainer.lastElementChild.querySelector(".delete-subtask");
+      addDeleteFunctionality(deleteBtn);
+    });
+  });
+</script>
+{% endblock js %}
