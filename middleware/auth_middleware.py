@@ -14,7 +14,6 @@ class GlobalAuthMiddleware:
         exempt_urls_names = getattr(settings, "AUTH_EXEMPT_URLS", [])  # type: ignore
         exempt_urls_path = [reverse(url) for url in exempt_urls_names]
         exempt_urls_path.append("/admin/")
-        print(exempt_urls_path)
         # for the saver side just adding the login url if it is not present in the exempt_urls
         login_url = settings.LOGIN_URL
         if login_url not in exempt_urls_path:

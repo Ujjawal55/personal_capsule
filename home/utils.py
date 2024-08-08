@@ -1,7 +1,9 @@
 from taskmanager.models import DailyTask
+# NOTE: case handle here
 
 
 def getTask(search_query):
+    latest_incomplete_task = ""
     if not search_query:
         latest_incomplete_task = (
             DailyTask.objects.filter(completed_at__isnull=True)
@@ -15,4 +17,5 @@ def getTask(search_query):
         .order_by("-created_at")
         .first()
     )
+
     return task

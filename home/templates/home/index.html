@@ -10,10 +10,9 @@
       <div class="column column--1of3">
         <div class="card text-center">
           <div class="card__body dev">
-            <img class="avatar a vatar--xl" src="" />
-            <h2 class="dev__name"></h2>
-            <p class="dev__title"></p>
-            <p class="dev__location"></p>
+            <img class="avatar a vatar--xl" src="{{ profile.profile_image.url }}" />
+            <h2 class="dev__name">{{profile.name}}</h2>
+
             <ul class="dev__social">
 
               {% if profile.social_github %}
@@ -26,6 +25,10 @@
               <li>
                 <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank"><i
                     class="fa-brands fa-linkedin fa-2x"></i></a>
+              </li>
+              <li>
+                <a title="LinkedIn" href="https://mail.google.com/mail/u/{{profile.mail}}" target="_blank"><i
+                    class="fa fa-envelope fa-2x"></i></a>
               </li>
               {% endif %}
             </ul>

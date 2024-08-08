@@ -29,8 +29,9 @@ def logoutUser(request):
 
 
 def homePage(request):
-    task = getTask("")
-    context = {"task": task}
+    profile = request.user.profile
+    task = getTask(profile.last_search)
+    context = {"task": task, "profile": profile}
     return render(request, "home/index.html", context)
 
 
