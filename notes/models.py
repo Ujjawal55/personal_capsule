@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 import uuid
 import os
 # Create your models here.
@@ -7,6 +8,7 @@ import os
 
 
 class Notes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notes")
     title = models.CharField(max_length=30, null=True, blank=True)
     body = models.TextField(blank=True)
     image = models.ImageField(upload_to="notes/images/", null=True, blank=True)

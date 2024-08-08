@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 import uuid
 
@@ -5,6 +6,7 @@ import uuid
 
 
 class Bookmark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookmarks")
     title = models.CharField(max_length=255)
     url = models.URLField()
     id = models.UUIDField(
@@ -16,6 +18,7 @@ class Bookmark(models.Model):
 
 
 class Video(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="videos")
     title = models.CharField(max_length=40)
     description = models.TextField(blank=True, null=False)
     url = models.URLField()
