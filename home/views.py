@@ -9,23 +9,17 @@ from django.utils import timezone
 
 def loginUser(request):
     if request.method == "POST":
-        username = request.POST["username"]
+        username = request.POST["username"].lower()
         password = request.POST["password"]
 
-        try:
-            user = User.objects.get(username=username)
-        except:
-            print(
-                "you are not a valid user..."
-            )  # NOTE: just show the message here that the user is wrong
-            return redirect("home:login")
-
         user = authenticate(request, username=username, password=password)
-        if user is None:
-            print("some thing is wrong with username or password")
-            return redirect("home:login")
-        login(request, user)
-        return redirect("home:homePage")
+        if user is not None:
+            login(request, user)
+            return redirect("home:homePage")
+        else:
+            print(
+                "something is wrong with userid or password"
+            )  # NOTE: replace with the message
     return render(request, "home/login_user.html")
 
 
