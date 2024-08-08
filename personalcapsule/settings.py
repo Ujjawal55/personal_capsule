@@ -55,6 +55,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+LOGIN_URL = "/login/"
+
+AUTH_EXEMPT_URLS = ["login", "logout"]
+
 ROOT_URLCONF = "personalcapsule.urls"
 
 TEMPLATES = [
