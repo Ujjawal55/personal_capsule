@@ -46,17 +46,18 @@
           <h3 class="devInfo__title">SubTask</h3>
           <div class="settings">
             <h3 class="settings__title">Title</h3>
-            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'home:edit-subtasks' pk=task.id %}"><i
+                class="im im-plus"></i>
               Edit</a>
           </div>
           {% for subtask in task.subtasks.all %}
           {% if subtask %}
-          {% if subtask.completed_at__isnull %}
-          <h6>{{ subtask.title }}</h6>
-          {% else %}
+          {% if subtask.is_completed %}
           <s>
             <h6>{{ subtask.title }}</h6>
           </s>
+          {% else %}
+          <h6>{{ subtask.title }}</h6>
           {% endif %}
           {% else %}
           <h6>No Subtask Available</h6>

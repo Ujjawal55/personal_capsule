@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="formPage my-xl">
+  <div class="content-box">
+    <div class="formWrapper">
+      <form class="form" action="" method="POST">
+        {% csrf_token %}
+        {% for subtask in subtasks %}
+        <div class="subtask-entry" style="display: flex; align-items: center; margin-bottom: 10px;">
+          <input style="flex-grow: 1; margin-right: 10px;" class="input" type="text" name="subtask_title_{{subtask.id}}"
+            placeholder="Subtask title" value="{{ subtask.title }}" readonly />
+          <button type="button" class="btn btn-sub btn--lg toggleBtn" style="color: white;"
+            data-subtask-id="{{subtask.id}}" data-is-completed="{{subtask.is_completed|lower}}">
+            {% if subtask.is_completed %}Completed{% else %}Not Completed{% endif %}
+          </button>
+          <input type="hidden" name="subtask_completed_{{subtask.id}}" value="{{subtask.is_completed|lower}}">
+        </div>
+        {% endfor %}
+        <a class="btn btn--sub btn--lg my-md" href="{% url 'home:homePage' %}">go_back</a>
+        <input class="btn btn--sub btn--lg my-md" type="submit" value="Confirm" />
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButtons = document.querySelectorAll('.toggleBtn');
+
+    function updateButtonState(button, isCompleted) {
+      if (isCompleted === 'true') {
+        button.style.backgroundColor = '';
+        button.textContent = 'Completed';
+      } else {
+        button.style.backgroundColor = '#6da6e3';
+        button.textContent = 'Not Completed';
+      }
+    }
+
+    toggleButtons.forEach(button => {
+      // Set initial state
+      updateButtonState(button, button.dataset.isCompleted);
+
+      button.addEventListener('click', function () {
+        const isCompleted = this.dataset.isCompleted === 'true';
+        const newState = (!isCompleted).toString();
+
+        this.dataset.isCompleted = newState;
+        updateButtonState(this, newState);
+
+        // Update hidden input
+        const hiddenInput = document.querySelector(`input[name="subtask_completed_${this.dataset.subtaskId}"]`);
+        hiddenInput.value = newState;
+      });
+    });
+  });
+</script>
+{% endblock js %}

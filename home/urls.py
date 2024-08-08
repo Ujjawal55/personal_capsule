@@ -6,4 +6,5 @@ app_name = "home"
 
 urlpatterns = [
     path("", views.homePage, name="homePage"),
+    path("edit-subtasks/<str:pk>", views.editSubtaskView, name="edit-subtasks"),
 ]
