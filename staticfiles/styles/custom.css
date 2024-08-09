@@ -1,0 +1,30 @@
+/* adding the css for the notes section */
+section[div="notes-pagination"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+section[div="notes-pagination"] > main.inbox.my-xl {
+  width: 100%;
+  height: auto;
+}
+
+section[div="notes-pagination"] > main.inbox.my-xl > div.content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* adding the css to the update and delete button */
+
+.actions-botton {
+  display: flex;
+  gap: 3rem;
+}
+
+/* bookmark css */
+li.message#bookmark {
+  display: flex;
+  justify-content: space-between;
+}
