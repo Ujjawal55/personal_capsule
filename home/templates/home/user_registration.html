@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        {% load static %}
+        <img src="{% static 'images/icon.svg' %}" alt="icon" />
+      </a>
+      <h3>Account SignUp</h3>
+      <p>Create a new developer account</p>
+    </div>
+
+    <form
+      method="POST"
+      action="{% url 'home:register' %}"
+      class="form auth__form"
+    >
+      {% csrf_token %}
+      <!-- Input:Text -->
+      <!-- the form is class and the field is object and fiel.lable and field.field are attributes of the class from. -->
+      {% for field in form %}
+      <div class="form__field">
+        <label for="formInput#text">{{ field.label }}</label>
+        {{ field }} {% comment %} {% if field.help_text %} {{ field.help_text}}
+        {% endif %} {% endcomment %} {% for error in field.errors %}
+        <small style="color: red">{{ error }}</small>
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+      <div class="auth__actions">
+        <input class="btn btn--sub btn--lg" type="submit" value="Sign  In" />
+      </div>
+    </form>
+    <div class="auth__alternative">
+      <p>Already have an Account?</p>
+      <a href="{% url 'home:login' %}">Log In</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

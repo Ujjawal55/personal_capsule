@@ -5,6 +5,7 @@
     align-items: center;
     margin-bottom: 10px;
   }
+
   .subtask-entry input {
     flex-grow: 1;
     margin-right: 10px;
@@ -17,11 +18,8 @@
 <main class="formPage my-xl">
   <div class="content-box">
     <div class="formWrapper">
-      <a
-        class="backButton"
-        href="{% url 'taskmanager:details-daily-task' pk=daily_task.id %}"
-        ><i class="im im-angle-left"></i
-      ></a>
+      <a class="backButton" href="{% url 'taskmanager:details-daily-task' pk=daily_task.id %}"><i
+          class="im im-angle-left"></i></a>
       <br />
       <form class="form" action="" method="POST">
         {% csrf_token %}
@@ -39,19 +37,10 @@
         <div id="subtasks-container">
           {% for subtask in subtasks %}
           <div class="subtask-entry">
-            <input
-              class="input"
-              type="text"
-              name="subtask[]"
-              placeholder="Subtask title"
-              value="{{ subtask.title }}"
-              required
-            />
-            <button
-              type="button"
-              class="btn btn-sub btn--lg"
-              style="background-color: #f25a5c; color: white"
-            >
+            <input class="input" type="text" name="subtask[]" placeholder="Subtask title" value="{{ subtask.title }}"
+              required />
+            <button type="button" class="delete-subtask btn btn-sub btn--lg"
+              style="background-color: #f25a5c; color: white">
               Delete
             </button>
           </div>
@@ -59,11 +48,7 @@
           <!-- Subtasks will be added here -->
         </div>
 
-        <button
-          type="button"
-          id="add-subtask"
-          class="btn btn--sub btn--lg my-md"
-        >
+        <button type="button" id="add-subtask" class="btn btn--sub btn--lg my-md">
           ADD SUBTASK
         </button>
         <button type="submit" class="btn btn--sub btn--lg my-md">SUBMIT</button>
@@ -75,18 +60,8 @@
 <!-- Template for new subtask entries -->
 <template id="subtask-template">
   <div class="subtask-entry">
-    <input
-      class="input"
-      type="text"
-      name="subtask[]"
-      placeholder="Subtask title"
-      required
-    />
-    <button
-      type="button"
-      class="btn btn-sub btn--lg"
-      style="background-color: #f25a5c; color: white"
-    >
+    <input class="input" type="text" name="subtask[]" placeholder="Subtask title" required />
+    <button type="button" class="btn btn-sub btn--lg" style="background-color: #f25a5c; color: white">
       Delete
     </button>
   </div>

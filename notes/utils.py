@@ -1,31 +1,35 @@
+from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from notes.models import Notes
 
 
 def searchQuery(request):
+    user = request.user
     search_query = request.GET.get("search_query", "")
 
     if not search_query:
-        return Notes.objects.all(), search_query
+        return user.notes.all(), search_query
 
-    notes = Notes.objects.filter(title__icontains=search_query)
+    notes = user.notes.filter(title__icontains=search_query)
+
+    if not notes.exists():
+        messages.error(request, f'No notes with title "{search_query}" exist')
 
     return notes, search_query
 
 
-def pagination(request, projects, objects_per_page):
+def pagination(request, notes, objects_per_page):
     page_number = request.GET.get("page")
 
-    paginator = Paginator(projects, objects_per_page)
+    paginator = Paginator(notes, objects_per_page)
 
     try:
-        projects = paginator.page(page_number)
+        notes = paginator.page(page_number)
     except PageNotAnInteger:
         page_number = 1
-        projects = paginator.page(page_number)
+        notes = paginator.page(page_number)
     except EmptyPage:
         page_number = paginator.num_pages
-        projects = paginator.page(page_number)
+        notes = paginator.page(page_number)
 
     leftIndex = int(page_number) - 2
 
@@ -39,4 +43,4 @@ def pagination(request, projects, objects_per_page):
 
     custom_range = range(leftIndex, rightIndex)
 
-    return projects, custom_range
+    return notes, custom_range

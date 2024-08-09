@@ -5,7 +5,7 @@ from notes.models import Notes
 class NotesForm(ModelForm):
     class Meta:
         model = Notes
-        fields = "__all__"
+        fields = ["title", "body", "image"]
 
     def __init__(self, *args, **kwargs):
         super(NotesForm, self).__init__(*args, **kwargs)

@@ -1,14 +1,25 @@
+from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
-# NOTE: this method works with the vidoes and the bookmark because both have the title as search paramter
-def searchQuery(request, modelClass):
+def searchQuery(request, modelname):
     search_query = request.GET.get("search_query", "")
-
+    objects = ""
+    user = request.user
     if search_query == "":
-        return modelClass.objects.all(), search_query
+        if modelname == "video":
+            return user.videos.all(), search_query
+        if modelname == "bookmark":
+            return user.bookmarks.all(), search_query
 
-    objects = modelClass.objects.filter(title__icontains=search_query)
+    if modelname == "video":
+        objects = user.videos.filter(title__icontains=search_query)
+        if not objects.exists():
+            messages.error(request, f'No Video with title "{search_query} exist" ')
+    if modelname == "bookmark":
+        objects = user.bookmarks.filter(title__icontains=search_query)
+        if not objects.exists():
+            messages.error(request, f'No Bookmar with title "{search_query} exist" ')
     return objects, search_query
 
 

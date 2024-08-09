@@ -5,7 +5,7 @@ import uuid
 
 
 class DailyTask(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dailyTask")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dailyTasks")
     title = models.CharField(max_length=40)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

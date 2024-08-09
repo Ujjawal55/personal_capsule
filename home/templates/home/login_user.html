@@ -11,7 +11,7 @@
       <p>Hello User, Welcome Back!</p>
     </div>
 
-    <form method='POST' action="" class="form auth__form">
+    <form method='POST' action="{% url 'home:login' %}" class="form auth__form">
       {% csrf_token %}
       <!-- Input:Email -->
       <div class="form__field">
@@ -33,7 +33,7 @@
     </form>
     <div class="auth__alternative">
       <p>Don’t have an Account?</p>
-      <a href="#">Sign Up</a>
+      <a href="{% url 'home:register' %}">Sign Up</a>
     </div>
   </div>
 </div>

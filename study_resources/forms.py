@@ -5,7 +5,7 @@ from .models import Bookmark, Video
 class BookmarkForm(ModelForm):
     class Meta:
         model = Bookmark
-        fields = "__all__"
+        fields = ["title", "url"]
 
     def __init__(self, *args, **kwargs):
         super(BookmarkForm, self).__init__(*args, **kwargs)
@@ -17,7 +17,7 @@ class BookmarkForm(ModelForm):
 class VideoForm(ModelForm):
     class Meta:
         model = Video
-        fields = "__all__"
+        fields = ["title", "description", "url"]
 
     def __init__(self, *args, **kwargs):
         super(VideoForm, self).__init__(*args, **kwargs)

@@ -7,22 +7,7 @@
         {% csrf_token %}
 
         <h3>Are you sure, you want to delete to </h3>
-        <br></br>
-        <div class="form__field">
-          <label for="formInput#text">{{form.title.label}}</label>
-          {{form.title}}
-        </div>
-
-        <div class="form__field">
-          <label for="formInput#text">{{form.description.label}}</label>
-          {{form.description}}
-        </div>
-
-        <div class="form__field">
-          <label for="formInput#text">{{form.url.label}}</label>
-          {{form.url}}
-        </div>
-
+        <br />
 
         <a class="btn btn--sub btn--lg my-md" href="{% url 'study-resources:videos-list' %}">go_back
         </a>

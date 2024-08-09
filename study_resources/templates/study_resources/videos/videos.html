@@ -35,16 +35,12 @@
           </div>
 
           <div style="display: inline-block; padding:1rem;">
-            <span class="tag tag--pill tag--main">
-              <a href="{% url 'study-resources:video-description' pk=video.id %}">view</a>
+            <span class="btn btn--sub btn--md">
+              <a style="color: white;" href="{% url 'study-resources:video-description' pk=video.id %}">view</a>
             </span>
 
-            <span class="tag tag--pill tag--main">
-              <a href={% url 'study-resources:edit-video' pk=video.id %}>edit</a>
-            </span>
-
-            <span class="tag tag--pill tag--main">
-              <a href={% url 'study-resources:delete-video' pk=video.id %}>delete</a>
+            <span class="btn btn--sub btn--md">
+              <a style="color: white;" href={% url 'study-resources:edit-video' pk=video.id %}>edit</a>
             </span>
           </div>
         </div>

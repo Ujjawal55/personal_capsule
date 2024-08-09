@@ -58,7 +58,10 @@ MIDDLEWARE = [
 
 LOGIN_URL = "/login/"
 
-AUTH_EXEMPT_URLS = ["home:login", "home:logout"]
+AUTH_EXEMPT_URLS = [
+    "home:login",
+    "home:logout",
+]
 
 ROOT_URLCONF = "personalcapsule.urls"
 

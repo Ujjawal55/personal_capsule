@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+
 <main class="singleProject my-md">
   <div class="container">
     <div class="layout">
@@ -17,21 +18,18 @@
             video-link:
           </h6>
           <h5 style="display: inline-block">
-            <a href="{{ video.url }}"> &nbsp;&nbsp;{{video.url}} </a>
+            <a href="{{ video.url }}" target="_blank"> &nbsp;&nbsp;{{video.url}} </a>
           </h5>
+          <div style="display:flex; justify-content: space-between;">
+            <div style="display:flex; gap:0.5rem;">
+              <a href="{% url 'study-resources:videos-list' %}" class="btn btn--sub btn--lg">Back</a>
+              <a href="{% url 'study-resources:edit-video' pk=video.id %}" class="btn btn--sub btn--lg">Edit</a>
+            </div>
+            <a class="btn btn--sub btn--lg " href="{% url 'study-resources:delete-video' pk=video.id %}">Delete</a>
+          </div>
         </div>
       </div>
     </div>
-    <a
-      href="{% url 'study-resources:videos-list' %}"
-      class="btn btn--sub btn--lg"
-      >Back</a
-    >
-    <a
-      href="{% url 'study-resources:edit-video' pk=video.id %}"
-      class="btn btn--sub btn--lg"
-      >Edit</a
-    >
   </div>
 </main>
 

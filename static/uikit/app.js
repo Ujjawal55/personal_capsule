@@ -1,13 +1,21 @@
-// Invoke Functions Call on Document Loaded
 document.addEventListener("DOMContentLoaded", function () {
-  hljs.highlightAll();
-});
+  // Highlight code if you're using a syntax highlighter
+  if (typeof hljs !== "undefined") {
+    hljs.highlightAll();
+  }
 
-let alertWrapper = document.querySelector(".alert");
-let alertClose = document.querySelector(".alert__close");
+  // Select all alert elements
+  const alerts = document.querySelectorAll(".alert");
 
-if (alertWrapper) {
-  alertClose.addEventListener("click", () => {
-    alertWrapper.style.display = "none";
+  alerts.forEach((alert, index) => {
+    // Hide the message after 3 seconds
+    setTimeout(() => {
+      alert.style.display = "none";
+    }, 3000); // 3000ms = 3 seconds
+
+    // Only show the first message
+    if (index > 0) {
+      alert.style.display = "none";
+    }
   });
-}
+});
