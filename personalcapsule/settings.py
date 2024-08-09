@@ -26,7 +26,12 @@ SECRET_KEY = "django-insecure-qmhlhp+l#-uvt5+8p7(1nutt=rq5l(*0ul+^#c_3f$&%78v-2!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".vercel_app"]
+ALLOWED_HOSTS = [
+    "personalcapsule-production.up.railway.app",
+    "https://personalcapsule-production.up.railway.app",
+]
+
+CSRF_TRUSTED_ORIGINS = ["https://personalcapsule-production.up.railway.app"]
 
 
 # Application definition
