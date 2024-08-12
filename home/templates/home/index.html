@@ -39,7 +39,8 @@
       <div class="column column--2of3">
         <div class="settings">
           <h3 class="settings__title">Title</h3>
-          <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i>
+          <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'home:search-task' %}"><i
+              class="im im-plus"></i>
             Add Task</a>
         </div>
         <p class="devInfo__about">{{ task.title }}</p><br />

@@ -11,4 +11,5 @@ urlpatterns = [
     path("create-profile/", views.createProfileView, name="create-profile"),
     path("", views.homePage, name="homePage"),
     path("edit-subtasks/<str:pk>", views.editSubtaskView, name="edit-subtasks"),
+    path("search-task/", views.searchTaskView, name="search-task"),
 ]

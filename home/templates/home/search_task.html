@@ -1,21 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Create Notes</h2>
 <main class="formPage my-xl">
   <div class="content-box">
     <div class="formWrapper">
-      <a class="backButton" href="{% url 'notes:notes-list' %}"
-        ><i class="im im-angle-left"></i
-      ></a>
+      <a class="backButton" href="{% url 'home:homePage' %}"><i class="im im-angle-left"></i></a>
       <br />
       <form class="form" action="" method="POST">
         {% csrf_token %}
 
         <div class="form__field">
-          <label for="formInput#text">{{form.title.label}}</label>
-          {{form.title}}
+          <label for="formInput#text">Search Task title</label>
+          <input type="text" class="input" name="title" value="" />
         </div>
-        <input class="btn btn--sub btn--lg my-md" type="submit" value="Save" />
+        <input class="btn btn--sub btn--lg my-md" type="submit" value="Search" />
       </form>
     </div>
   </div>

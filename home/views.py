@@ -89,3 +89,29 @@ def editSubtaskView(request, pk):
         return redirect("home:homePage")
     context = {"subtasks": subtasks}
     return render(request, "home/edit_subtask.html", context)
+
+
+def searchTaskView(request):
+    user = request.user
+    if request.method == "POST":
+        search_query = request.POST.get("title", "").strip()
+        # first check if the exact match is found or not
+        try:
+            dailyTask = user.dailyTasks.get(title=search_query)
+        except DailyTask.DoesNotExist:  # type: ignore
+            # check if the task have the matching pattern
+            dailyTasks = user.dailyTasks.filter(title__icontains=search_query)
+            if dailyTasks.exists():
+                dailyTask = dailyTasks.order_by("-created_at").first()
+            else:
+                dailyTask = None
+
+        if dailyTask is None:
+            messages.error(request, "title does not exist")
+            return redirect("home:search-task")
+
+        user.profile.last_search = dailyTask.title
+        user.profile.save()
+        return redirect("home:homePage")
+
+    return render(request, "home/search_task.html")

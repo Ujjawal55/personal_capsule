@@ -27,6 +27,7 @@ SECRET_KEY = "django-insecure-qmhlhp+l#-uvt5+8p7(1nutt=rq5l(*0ul+^#c_3f$&%78v-2!
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "127.0.0.1",
     "personalcapsule-production.up.railway.app",
     "https://personalcapsule-production.up.railway.app",
 ]
