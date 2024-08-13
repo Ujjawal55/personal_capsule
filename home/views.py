@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from home.forms import CustomUserCreationForm
+from home.forms import CustomUserCreationForm, ProfileForm
 from home.utils import getTask
 from taskmanager.models import DailyTask
 from django.utils import timezone
@@ -46,10 +46,6 @@ def registerUserView(request):
         form = CustomUserCreationForm()
     context = {"form": form}
     return render(request, "home/user_registration.html", context)
-
-
-def createProfileView(request):
-    return render(request, "home/create_profile.html")
 
 
 def homePage(request):
@@ -115,3 +111,19 @@ def searchTaskView(request):
         return redirect("home:homePage")
 
     return render(request, "home/search_task.html")
+
+
+def editProfileView(request):
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your profile has been edited successfully")
+            return redirect("home:homePage")
+        else:
+            messages.error(request, "Some error in form")
+            return redirect("home:edit-profile")
+    context = {"form": form}
+    return render(request, "home/edit_profile.html", context)

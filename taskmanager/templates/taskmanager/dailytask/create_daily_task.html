@@ -10,6 +10,23 @@
     flex-grow: 1;
     margin-right: 10px;
   }
+
+  @media (max-width: 400px) {
+    .subtask-entry {
+      flex-direction: column;
+      /* Stack the input and button vertically */
+      align-items: stretch;
+      /* Align items to stretch to full width */
+    }
+
+    .subtask-entry input {
+      margin-right: 0;
+      /* Remove right margin when stacking vertically */
+      margin-bottom: 10px;
+      /* Add margin to separate input and button */
+    }
+
+  }
 </style>
 
 {% endblock css %} {% block content %}

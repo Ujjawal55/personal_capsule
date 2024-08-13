@@ -10,6 +10,11 @@
       <div class="column column--1of3">
         <div class="card text-center">
           <div class="card__body dev">
+
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'home:edit-profile' %}"><i
+                class="im im-plus"></i>
+              Edit</a>
+
             <img class="avatar a vatar--xl" src="{{ profile.profile_image.url }}" />
             <h2 class="dev__name">{{profile.name}}</h2>
 

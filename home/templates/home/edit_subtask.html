@@ -1,5 +1,40 @@
 {% extends 'base.html' %}
+{% block css %}
 
+<style>
+  .subtask-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .subtask-entry input[type="text"] {
+    flex-grow: 1;
+    margin-right: 8px;
+    /* Ensure no margin below when in row layout */
+  }
+
+
+  /* Media Query for smaller screens or narrow containers */
+  @media (max-width: 400px) {
+    .subtask-entry {
+      flex-direction: column;
+      /* Stack input and button vertically */
+      align-items: stretch;
+      /* Make both elements take full width */
+    }
+
+    .subtask-entry input[type="text"] {
+      margin-right: 0;
+      /* Remove right margin when stacking vertically */
+      margin-bottom: 10px;
+      /* Add margin between input and button */
+    }
+  }
+</style>
+
+
+{% endblock css %}
 {% block content %}
 <main class="formPage my-xl">
   <div class="content-box">
@@ -7,9 +42,9 @@
       <form class="form" action="" method="POST">
         {% csrf_token %}
         {% for subtask in subtasks %}
-        <div class="subtask-entry" style="display: flex; align-items: center; margin-bottom: 10px;">
-          <input style="flex-grow: 1; margin-right: 10px;" class="input" type="text" name="subtask_title_{{subtask.id}}"
-            placeholder="Subtask title" value="{{ subtask.title }}" readonly />
+        <div class="subtask-entry">
+          <input class="input" type="text" name="subtask_title_{{subtask.id}}" placeholder="Subtask title"
+            value="{{ subtask.title }}" readonly />
           <button type="button" class="btn btn-sub btn--lg toggleBtn" style="color: white;"
             data-subtask-id="{{subtask.id}}" data-is-completed="{{subtask.is_completed|lower}}">
             {% if subtask.is_completed %}Completed{% else %}Not Completed{% endif %}
