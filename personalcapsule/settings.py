@@ -28,11 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "personalcapsule-production.up.railway.app",
-    "https://personalcapsule-production.up.railway.app",
+    "personalcapsule-production-fcd3.up.railway.app",
+    "https://personalcapsule-production-fcd3.up.railway.app",
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://personalcapsule-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://personalcapsule-production-fcd3.up.railway.app",
+]
 
 
 # Application definition
