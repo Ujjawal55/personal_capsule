@@ -3,11 +3,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from notes.models import Notes
 from notes.forms import NotesForm
 from notes.utils import searchQuery, pagination
-# Create your views here.
+
 
 # TODO: have to add the functionality of the editing the message.
 # TODO: have to add the else part for the not valid form of the error handling
 # TODO: have to add the message functionality if the notes is created, deleted, edited
+#
 
 
 def notesListView(request):
@@ -56,7 +57,7 @@ def editNotesView(request, pk):
             updated_note = form.save(commit=False)
             updated_note.user = request.user
             updated_note.save()
-            messages.success(request, "Changes have been saved successfully")
+            messages.error(request, "Changes have been saved successfully")
             return redirect("notes:notes-detail", pk=updated_note.id)
         else:
             messages.error(request, "Error in the form")
@@ -70,7 +71,7 @@ def deleteNotesView(request, pk):
     note = get_object_or_404(Notes, id=pk, user=request.user)
     if request.method == "POST":
         note.delete()
-        messages.success(request, "Note has been deleted")
+        messages.success(request, "your notes is deleted")
         return redirect("notes:notes-list")
     context = {"note": note}
     return render(request, "notes/delete_note.html", context)
